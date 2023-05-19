@@ -1,0 +1,48 @@
+CREATE TABLE ESERCIZIO_5 (
+    COLONNA1 VARCHAR(255),
+    COLONNA2 VARCHAR(255),
+    DOUBLE1 DOUBLE
+);
+
+INSERT INTO ESERCIZIO_5(COLONNA1, COLONNA2, DOUBLE1)
+VALUES('Ermes', 'Costello', 13.456363632314);
+
+-- output
+
+
+SELECT
+
+-- CONCAT = unisco duo o più stringhe tra loro, creandone una
+CONCAT(COLONNA1, COLONNA2) AS STRINGHE_UNITE,
+
+-- LOWER = stampa in misculo la stringa
+LOWER(COLONNA1),
+
+-- UPPER = stampa in maiuscolo la stringa
+UPPER(COLONNA1),
+
+-- TRIM = rimuove gli spazi presenti prima e dopo i char nella stringa
+TRIM(COLONNA1),
+
+-- LENGTH = stampa il numero di char che compongono la stringa
+LENGTH(COLONNA1),
+
+-- SUBSTRING = stampa la stringa partendo dal char indicato dal numero del primo int fino al secondo int
+SUBSTRING(COLONNA1, 2, 2),
+
+-- ROUND = arrotonda il valore double fino al valore indicato in seguito
+ROUND(DOUBLE1, 3),
+
+-- DATE_ADD = utilizzo una data (quella di adesso in questo caso NOW()) e la stampo aggiungendo al tempo un intervallo di X anni, mesi, giorni, ore, minuti e/o secondi
+DATE_ADD(NOW(), INTERVAL 3 DAY) AS DATA_DOPO,
+
+-- DATE_SUB = utilizzo una data (quella di adesso in questo caso NOW()) e la stampo rimuovendo al tempo un intervallo di X anni, mesi, giorni, ore, minuti e/o secondi
+DATE_SUB(NOW(), INTERVAL 2 DAY) AS DATA_PRIMA,
+
+-- FORMAT = permette di cambiare il tipo di formato di un numero decimale (arrotondato) o una data
+FORMAT(DOUBLE1, 2) AS NUOVO_DOUBLE
+
+FROM ESERCIZIO_5;
+
+-- Compleanno
+SELECT DATE_ADD(DATE_SUB(NOW(), INTERVAL 10 DAY), INTERVAL 8 MONTH) AS COMPLEANNO;
